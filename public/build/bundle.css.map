@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\..\\src\\Users.svelte",
+    "..\\..\\src\\User.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\r\n  import User from './User.svelte'\r\n  import { users } from './data-users.js'\r\n  const addUser = () => {\r\n    const id = Math.floor(Math.random()*1000)\r\n    let name = \"\"\r\n    $users['ID'+id] = {id, name}\r\n  }\r\n</script>\r\n\r\n<!-- ############################## -->\r\n\r\n<style>\r\n  #users{\r\n    display: grid;\r\n    grid-gap: 10px;\r\n    padding: 10px;\r\n  }\r\n  button{\r\n    height: 45px;\r\n  }\r\n</style>\r\n\r\n<!-- ############################## -->\r\n\r\n<div id=\"users\">\r\n  {#each Object.keys($users) as key}\r\n    <User key={key} bind:user={$users[key]} />\r\n  {/each}\r\n\r\n  <button on:click={addUser}>Add User</button>\r\n\r\n  <pre>\r\n    {JSON.stringify($users, null, 2)}\r\n  </pre>\r\n</div>\r\n\r\n\r\n\r\n",
+    "<script>\r\n  import { users } from './data-users.js'\r\n  export let key\r\n  export let user\r\n  let undo = false\r\n\r\n  const deleteUser = () => {\r\n    undo = true\r\n    setTimeout( ()=>{\r\n      if(undo){\r\n        delete $users[key]\r\n        $users = $users\r\n        undo = false\r\n      }\r\n    }, 3000 )\r\n  }\r\n  const undoDeleteUser = () => {\r\n    undo = false\r\n  }\r\n</script>\r\n\r\n<!-- ############################## -->\r\n\r\n<style>\r\n  .user{\r\n    display: grid;\r\n    grid-template-columns: 3fr 10fr 3fr;\r\n    grid-gap: 10px;\r\n  }\r\n  input{\r\n    width: 100%;\r\n    border: 1px solid gray;\r\n    outline: none;\r\n    padding-left: 5px;\r\n  }\r\n  button{\r\n    outline: none;\r\n    border: none;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n    padding: 5px;\r\n  }\r\n</style>\r\n\r\n<!-- ############################## -->\r\n\r\n<div class=\"user\">\r\n  <div>{key}</div>\r\n  <input type=\"text\" bind:value={user.name} autofocus>\r\n  {#if !undo}\r\n    <button on:click={deleteUser}>🗑️</button>\r\n  {:else}\r\n    <button on:click={undoDeleteUser}>Undo</button>\r\n  {/if}\r\n</div>\r\n\r\n\r\n"
+  ],
+  "names": [],
+  "mappings": "AAaE,oBAAM;;;;EAIN,CAAC,AACD,oBAAM;;EAEN,CAAC;ACID,oBAAK;;;;EAIL,CAAC,AACD,oBAAK;;;;;EAKL,CAAC,AACD,qBAAM;;;;;;EAMN,CAAC"
+}

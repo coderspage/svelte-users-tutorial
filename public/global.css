@@ -1,0 +1,13 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+boby{
+	width: 100%;
+	overflow: hidden;
+	overflow-y: scroll;
+	font-size: 110%;
+	font-weight: 300;
+}

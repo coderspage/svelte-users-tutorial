@@ -1,0 +1,25 @@
+#users.svelte-ms8qor{
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+  }button.svelte-ms8qor{
+    height: 45px;
+  }
+.user.svelte-19u3xjx{
+    display: grid;
+    grid-template-columns: 3fr 10fr 3fr;
+    grid-gap: 10px;
+  }input.svelte-19u3xjx{
+    width: 100%;
+    border: 1px solid gray;
+    outline: none;
+    padding-left: 5px;
+  }button.svelte-19u3xjx{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+/*# sourceMappingURL=bundle.css.map */
